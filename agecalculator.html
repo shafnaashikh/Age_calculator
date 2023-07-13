@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        body{
+            background-image: url('background.jpg');
+            background-size: cover;
+            
+        }
+        .container{
+            background-color: peachpuff;
+            height: 11cm;
+            width: 16cm;
+            border-radius: 2cm;
+            margin-top: 6.2cm;
+            margin-left: 2cm;
+        }
+        .container h4{
+            font-size: 1cm;
+            font-family: cursive;
+            text-align: center;
+            
+            color: red;
+            text-shadow: 2px 2px 4px black;
+        }
+        .content{
+            width: 130px;
+            padding: 5px 20px;
+            margin-left: 20px;
+            display: inline-block;
+        }
+        .calci{
+            font-size: 0.7cm;
+        }
+        #date{
+            margin-top: -0.5cm;
+            width: 2cm;
+            height: 1cm;
+
+        }
+        #month{
+            margin-top: -0.5cm;
+            width: 2cm;
+            height: 1cm;
+
+        }
+        #year{
+            margin-top: -0.5cm;
+            width: 2cm;
+            height: 1cm;
+
+        }
+        .btn{
+            text-align: center;
+        
+        }
+        #button{
+            font-size: 0.7cm;
+            width: 5cm;
+            height: 1.2cm;
+            border-radius: 0.9cm;
+            margin-top: 1.2cm;
+            background-color: white;
+            font-family: cursive;
+
+        }
+        .btn :hover{
+            background-color: black;
+        }
+        .age{
+            color: white;
+            font-family: cursive;
+            font-size: 0.6cm;
+            color: blue;
+            text-shadow: 1px 2px 4px white, 1px 2px 4px white;
+            text-align: center;
+            margin-top: 0.5cm;
+        }
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h4>AGE CALCULATOR</h4>
+            <div class="main">
+            <div class="content">
+                <p class="calci">Date </p>
+                <input type="text" placeholder="DD" id="date" minlength="1" maxlength="2">
+            </div>
+            <div class="content">
+                <p class="calci">Month </p>
+                <input type="text" placeholder="MM" id="month" minlength="1" maxlength="2">
+                
+            
+            </div>
+            <div class="content">
+                <p class="calci">Year </p>
+                <input type="text" placeholder="YYYY" id="year" minlength="4" maxlength="4">
+            </div>
+            </div>
+            <div class="btn">
+                <input type="button" name="calculate" id="button" value="Calculate" onclick="age()"/>
+            </div>
+        
+        <div class="age" id="age">
+        <script>
+            function age()
+            {
+            var d1 = document.getElementById('date').value;
+            var m1 = document.getElementById('month').value;
+            var y1 = document.getElementById('year').value;
+
+            var date = new Date();
+            var d2 = date.getDate();
+            var m2 = 1 + date.getMonth();
+            var y2 = date.getFullYear();
+            var month = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+            if(d1> d2){
+                d2 = d2 + month[m2 - 1];
+                m2 = m2 - 1;
+            }
+            if(m1> m2){
+                m2 = m2 + 12;
+                y2 = y2 - 1;
+            }
+            var d = d2 - d1;
+            var m = m2 - m1;
+            var y = y2 - y1;
+
+            document.getElementById('age').innerHTML = 'Your Age is\t' +y+ 'years\t' +m+ 'months\t' +d+ 'days.';
+                   }
+
+        </script>
+        </div>
+    </div>
+    </body>
+</html>
